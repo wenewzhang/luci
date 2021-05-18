@@ -9,22 +9,6 @@
 		}
 	},
 
-	"luci-mod-status-processes": {
-		"description": "Grant access to process status",
-		"read": {
-			"ubus": {
-				"luci": [ "getProcessList" ]
-			}
-		},
-		"write": {
-			"file": {
-				"/bin/kill": [ "exec" ]
-			},
-			"ubus": {
-				"file": [ "exec" ]
-			}
-		}
-	},
 
 	"luci-mod-status-logs": {
 		"description": "Grant access to system logs",

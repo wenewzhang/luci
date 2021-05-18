@@ -15,28 +15,6 @@
 		}
 	},
 
-	"luci-mod-system-ssh": {
-		"description": "Grant access to SSH configuration",
-		"read": {
-			"file": {
-				"/etc/dropbear/authorized_keys": [ "read" ]
-			},
-			"ubus": {
-				"file": [ "read" ]
-			},
-			"uci": [ "dropbear" ]
-		},
-		"write": {
-			"file": {
-				"/etc/dropbear/authorized_keys": [ "write" ]
-			},
-			"ubus": {
-				"file": [ "write" ],
-				"luci": [ "setInitAction", "setLocaltime" ]
-			},
-			"uci": [ "dropbear" ]
-		}
-	},
 
 	"luci-mod-system-init": {
 		"description": "Grant access to startup configuration",
@@ -57,58 +35,6 @@
 				"file": [ "write" ],
 				"luci": [ "setInitAction" ]
 			}
-		}
-	},
-
-	"luci-mod-system-cron": {
-		"description": "Grant access to crontab configuration",
-		"read": {
-			"file": {
-				"/etc/crontabs/root": [ "read" ]
-			},
-			"ubus": {
-				"file": [ "read" ]
-			}
-		},
-		"write": {
-			"file": {
-				"/etc/crontabs/root": [ "write" ]
-			},
-			"ubus": {
-				"file": [ "write" ]
-			}
-		}
-	},
-
-	"luci-mod-system-mounts": {
-		"description": "Grant access to mount configuration",
-		"read": {
-			"file": {
-				"/etc/filesystems": [ "read" ],
-				"/proc/filesystems": [ "read" ],
-				"/usr/bin/btrfsck": [ "list" ],
-				"/usr/bin/ntfsfix": [ "list" ],
-				"/usr/sbin/e2fsck": [ "list" ],
-				"/usr/sbin/fsck.f2fs": [ "list" ],
-				"/usr/sbin/fsck.fat": [ "list" ]
-			},
-			"ubus": {
-				"file": [ "read", "stat" ],
-				"luci": [ "getBlockDevices", "getMountPoints" ]
-			},
-			"uci": [ "fstab" ]
-		},
-		"write": {
-			"file": {
-				"/etc/crontabs/root": [ "write" ],
-				"/bin/umount": [ "exec" ],
-				"/sbin/block": [ "exec" ]
-			},
-			"ubus": {
-				"file": [ "exec", "write" ],
-				"luci": [ "setBlockDetect" ]
-			},
-			"uci": [ "fstab" ]
 		}
 	},
 
