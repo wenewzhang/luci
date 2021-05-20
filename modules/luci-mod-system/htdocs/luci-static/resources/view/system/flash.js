@@ -230,7 +230,8 @@ return view.extend({
 		m.readonly = isReadonlyView;
 
 		s = m.section(form.NamedSection, 'actions', _('Actions'));
-
+		o = s.option(form.SectionValue, 'actions', form.NamedSection, 'actions', 'actions', _('Restore'), _('To restore configuration files, you can upload a previously generated backup archive here. To reset the firmware to its initial state, click "Perform reset" (only possible with squashfs images).'));
+		ss = o.subsection;
 		if (has_rootfs_data) {
 			o = ss.option(form.Button, 'reset', _('Reset to defaults'));
 			o.inputstyle = 'negative important';
